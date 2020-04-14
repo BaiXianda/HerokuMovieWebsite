@@ -35,7 +35,9 @@ public class EventService {
             if (movieList == null) {
                 throw new MovieListIDException("there is no movieList with this ID exist in your group");
             } else if (!movieList.getMovieGroupID().equals(event.getEventGroupId())) {
-                throw new MovieListIDException("there is no movieList with this ID exist in your group test");
+                throw new MovieListIDException("there is no movieList with this ID exist in your group");
+            } else if (movieList.getMovies().size() < 3) {
+                throw new MovieListIDException("You need to choose a movie list with at least 3 movies");
             }
 
             MovieGroup movieGroup = movieGroupService.findByGroupID(event.getEventGroupId());
